@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Course Details</title>
+</head>
+<body>
+
+    <h2>Students and Their Courses</h2>
+
+    {% for student in students %}
+
+        <h3>{{ student.studentname }}</h3>
+
+        <ul>
+
+            {% for course in student.courses.all %}
+
+                <li>{{ course.coursename }}</li>
+
+            {% empty %}
+
+                <li>No courses selected.</li>
+
+            {% endfor %}
+
+        </ul>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No students found.</p>
+
+    {% endfor %}
+
+    <a href="{% url 'insertstudent' %}">
+        Add Student
+    </a>
+
+    <br>
+
+    <a href="{% url 'insertcourse' %}">
+        Add Course
+    </a>
+
+</body>
+</html>
